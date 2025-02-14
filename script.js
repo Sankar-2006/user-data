@@ -21,7 +21,7 @@ form.addEventListener("submit", (e) => {
     name: document.querySelector(".userName").value,
     email: document.querySelector(".userEmail").value,
   };
-  fetch("https://localhost:3001", {
+  fetch("http://localhost:8000", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -30,5 +30,8 @@ form.addEventListener("submit", (e) => {
   })
     .then(res => res.json())
     .then(data => alert("The data has been sent! :)"))
-    .catch(err => alert("Data has not sent :("))
+    .catch(err => {
+      alert("Data has not sent :(")
+      console.log(err);
+    })
 });

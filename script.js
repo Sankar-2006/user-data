@@ -17,21 +17,27 @@ navLoad.addEventListener("click", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const data = {
     name: document.querySelector(".userName").value,
     email: document.querySelector(".userEmail").value,
   };
-  fetch("http://localhost:8000", {
-    method: "POST",
+
+
+
+  fetch("http://localhost:8080", {
+    method: "",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   })
     .then(res => res.json())
-    .then(data => alert("The data has been sent! :)"))
+    .then(e => {
+      console.log("The data has been sent! :)" + e)
+    })
     .catch(err => {
-      alert("Data has not sent :(")
+      console.log("Data is not sent :(")
       console.log(err);
     })
 });

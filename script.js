@@ -15,29 +15,29 @@ navLoad.addEventListener("click", () => {
   load.style.display = "block";
 });
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+//   const data = {
+//     name: document.querySelector(".userName").value,
+//     email: document.querySelector(".userEmail").value,
+//   };
+// });
+
+button.addEventListener("click", async () => {
 
   const data = {
     name: document.querySelector(".userName").value,
     email: document.querySelector(".userEmail").value,
   };
+  // console.log(JSON.stringify(data))
 
-
-
-  fetch("http://localhost:8080", {
-    method: "",
+  const response = await fetch("http://localhost:8080/", {
+    method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(data)
-  })
-    .then(res => res.json())
-    .then(e => {
-      console.log("The data has been sent! :)" + e)
-    })
-    .catch(err => {
-      console.log("Data is not sent :(")
-      console.log(err);
-    })
+    body: JSON.stringify(data),
+  });
+  const result = await response.text();
 });

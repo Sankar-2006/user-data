@@ -1,36 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require('cors');
+const Data = require("./db");
+
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const dbUri = process.env.MONGO_URI;
-
-mongoose.connect(dbUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log("Database connected successfully");
-  })
-  .catch((error) => {
-    console.log("Database connection error:", error);
-  });
-
-let dataSchema = mongoose.Schema({
-  name: {
-    type: String,
-    unique: true,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    lowercase: true
-  }
-});
-
-let Data = mongoose.model("Data", dataSchema);
 
 let createData = async (name, email) => {
   try {
@@ -46,9 +22,19 @@ let createData = async (name, email) => {
   }
 };
 
+bodyParser.urlencoded({ extended: true });
+app.use(cors());
+app.use(bodyParser.json())
+
 app.get("/", (req, res) => {
   res.send("Hello World");
-  console.log("opend");
+});
+
+app.post("/", (req, res) => {
+  let name = req.body.name;
+  let email = req.body.email;
+  createData(name, email);
+  res.send("Data created successfully");
 });
 
 app.listen(port, () => {

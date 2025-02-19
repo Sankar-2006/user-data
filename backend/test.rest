@@ -1,11 +1,13 @@
 ### Test GET request
-GET http://localhost:3000/
-Content-Type: application/json
+GET http://localhost:8080
+Accept: application/json
 
 ### Test POST request
-POST http://localhost:3000/a
+POST http://localhost:8080
 Content-Type: application/json
 
 {
-    "key": "value"
+    "name": "sankar",
+    "email": "sankar@mail.com"
 }
+

@@ -49,4 +49,3 @@ loadButton.addEventListener("click", async () => {
   load.style.display = "none";
   result.style.display = "block";
 });
-

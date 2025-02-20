@@ -136,14 +136,10 @@ form input:focus {
     border-radius: 5px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 550px) {
 
     header h1 {
         font-size: 1.6rem;
-    }
-
-    header nav ul {
-        gap: 10px;
     }
 
     main {

@@ -1,9 +1,8 @@
-const storeName = document.querySelector(".userName").value;
-const StoreEmail = document.querySelector(".userEmail").value;
+const storeName = document.querySelector(".userName");
+const storeEmail = document.querySelector(".userEmail");
 const storeButton = document.querySelector(".submitDataBtn");
 const load = document.querySelector(".load");
 const loadName = document.querySelector(".loadName");
-const loadEmail = document.querySelector(".loadEmail");
 const loadButton = document.querySelector(".loadDataBtn");
 const result = document.querySelector(".result");
 const responseName = document.querySelector(".responseName");
@@ -12,8 +11,8 @@ const responseEmail = document.querySelector(".responseEmail");
 storeButton.addEventListener("click", async () => {
 
   const data = {
-    name: storeName,
-    email: StoreEmail,
+    name: storeName.value,
+    email: storeEmail.value,
   };
 
   const response = await fetch("http://localhost:8080/", {
@@ -29,18 +28,15 @@ storeButton.addEventListener("click", async () => {
 
 });
 
-loadButton.addEventListener("click", async () => {
-  const data = {
-    name: loadName.value,
-    email: loadEmail.value,
-  };
 
-  const response = await fetch("http://localhost:8080/", {
-    method: "POST",
+loadButton.addEventListener("click", async () => {
+  const name = loadName.value;
+
+  const response = await fetch(`http://localhost:8080/?name=${encodeURIComponent(name)}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
   });
 
   const resultData = await response.json();

@@ -1,5 +1,5 @@
 ### Test GET request
-GET http://localhost:8080
+GET http://localhost:8080/?name=arulk
 Accept: application/json
 
 ### Test POST request
@@ -7,7 +7,7 @@ POST http://localhost:8080
 Content-Type: application/json
 
 {
-    "name": "sankar",
-    "email": "sankar@mail.com"
+    "name": "arul",
+    "email": "arul@mail.com"
 }
 

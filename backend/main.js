@@ -12,35 +12,6 @@ app.use(cors());
 bodyParser.urlencoded({ extended: true });
 app.use(bodyParser.json())
 
-// let createData = async (name, email) => {
-//   try {
-//     let data = new Data({
-//       name: name,
-//       email: email
-//     });
-//     await data.save();
-//     console.log("Data created successfully");
-//     return { success: true };
-//   }
-//   catch (error) {
-//     console.log("Error creating data:", error);
-//     return { success: false, error: error.message };
-//   }
-// };
-
-// app.post("/", async (req, res) => {
-//   let name = req.body.name;
-//   let email = req.body.email;
-//   let customHeader = req.get('X-Request-Source');
-//   console.log("X-Request-Source:", customHeader);
-//   let result = await createData(name, email);
-//   if (result.success) {
-//     res.status(200).send("Data created successfully");
-//   } else {
-//     res.status(500).send(`Error creating data: ${result.error}`);
-//   }
-// });
-
 let createData = async (name, email) => {
   try {
     let data = new Data({

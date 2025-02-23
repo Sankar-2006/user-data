@@ -1,5 +1,5 @@
 ### Test GET request
-GET http://localhost:8080/?name=arulk
+GET http://localhost:8080/?name=lol
 Accept: application/json
 
 ### Test POST request

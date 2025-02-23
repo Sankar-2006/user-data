@@ -29,28 +29,21 @@ let createData = async (name, email) => {
 let fetchDataByName = async (name) => {
   try {
     let data = await Data.findOne({ name: name });
-    if (data) {
-      return data;
-    } else {
-      return "No data found";
-    }
+    return data;
   } catch (err) {
-    return "Error fetching data";
+    return "No data found";
   }
 };
 
-
-
 app.get("/", async (req, res) => {
   let name = req.query.name;
-  if (name) {
-    let result = await fetchDataByName(name);
-    res.send(result);
-  } else {
+  if (!name) {
     res.send("Name query parameter is required");
+    return;
   }
+  let result = await fetchDataByName(name);
+  res.send(result);
 });
-
 
 app.post("/", async (req, res) => {
   let name = req.body.name;
@@ -62,5 +55,3 @@ app.post("/", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-

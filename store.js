@@ -2,7 +2,8 @@ const storeName = document.querySelector(".userName");
 const storeEmail = document.querySelector(".userEmail");
 const storeButton = document.querySelector(".submitDataBtn");
 
-storeButton.addEventListener("click", async () => {
+storeButton.addEventListener("click", async (e) => {
+  e.preventDefault();
   if (storeName.value === "" || storeEmail.value === "") {
     alert("Please fill in all fields");
     return;

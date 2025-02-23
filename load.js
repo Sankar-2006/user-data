@@ -25,7 +25,6 @@ loadButton.addEventListener("click", async (e) => {
         result.style.display = "block";
         load.style.display = "none";
     } catch (error) {
-        console.log(error)
         alert("Error getting data");
     }
 });
